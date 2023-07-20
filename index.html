@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Find, search, and post volunteering events"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="volunteer, events, search, post" />
+    <meta name="author" content="Your Name" />
+    <title>VolunteerBuddies</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="navbar-logo" href="index.html">VolunteerBuddies</a>
+      <div class="navbar-container">
+        <div class="navbar-buttons">
+          <a class="navbar-item" href="index.html">Main Page</a>
+          <a class="navbar-item" href="#">User Info</a>
+          <a class="navbar-item" href="about_us.html">About Us</a>
+        </div>
+        <div class="search-container">
+          <form>
+            <input type="text" placeholder="Search events" id="search-input" />
+            <button type="submit" id="search-button"></button>
+          </form>
+        </div>
+      </div>
+      <div class="search-input">
+        <a class="navbar-item navbar-login" href="login_page.html">Login</a>
+        <a class="navbar-item navbar-login" href="#">Sign Up</a>
+      </div>
+    </nav>
+    <a href="#post-menu" class="post-button">
+      <span>+</span>
+    </a>
+    <div class="sections-container">
+      <!-- Existing section 1 -->
+      <div class="section" id="section1">
+        <h2>Section 1</h2>
+        <div class="posts">
+          <!-- Volunteer posts for Section 1 -->
+          <!-- Example: <div class="post">Post 1</div> -->
+        </div>
+      </div>
+
+      <!-- New section -->
+      <div class="section" id="section2">
+        <h2>Section 2</h2>
+        <div class="posts">
+          <!-- Volunteer posts for Section 2 -->
+          <!-- Example: <div class="post">Post 2</div> -->
+        </div>
+      </div>
+    </div>
+    <!-- Your other website content here -->
+
+    <script>
+      // JavaScript code for adding scroll buttons dynamically
+      function addScrollButtonsToSection(sectionElement) {
+        const leftButton = document.createElement("div");
+        leftButton.classList.add("scroll-button", "left");
+        leftButton.innerHTML = '<i class="fas fa-chevron-left"></i>'; // Use Font Awesome icon
+        sectionElement.appendChild(leftButton);
+
+        const rightButton = document.createElement("div");
+        rightButton.classList.add("scroll-button", "right");
+        rightButton.innerHTML = '<i class="fas fa-chevron-right"></i>'; // Use Font Awesome icon
+        sectionElement.appendChild(rightButton);
+
+        const postsContainer = sectionElement.querySelector(".posts");
+        leftButton.addEventListener("click", function () {
+          const scrollDistance = postsContainer.clientWidth * 0.8; // Adjust the scroll distance
+          postsContainer.scrollBy({
+            left: -scrollDistance,
+            behavior: "smooth",
+          });
+          console.log("scrolled left");
+        });
+
+        rightButton.addEventListener("click", function () {
+          const scrollDistance = postsContainer.clientWidth * 0.8; // Adjust the scroll distance
+          postsContainer.scrollBy({
+            left: scrollDistance,
+            behavior: "smooth",
+          });
+          console.log("scrolled right");
+        });
+      }
+
+      // Add scroll buttons to each section
+      document.querySelectorAll(".section").forEach(function (section) {
+        addScrollButtonsToSection(section);
+      });
+    </script>
+  </body>
+</html>

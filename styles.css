@@ -1,0 +1,166 @@
+:root {
+  --primary-color: #00b894;
+  --secondary-color: #098466;
+  --text-color: #ffffff;
+  --input-background: #00997a;
+  --placeholder-color: #b0ddcd;
+}
+
+body {
+  background-color: #f2fff2;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.navbar-buttons {
+  margin-right: 15px;
+}
+
+.navbar-logo {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.navbar-item:hover {
+  background-color: var(--secondary-color);
+}
+
+.navbar-login {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.search-container {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#search-input {
+  flex: 1;
+  width: 290px;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding-left: 40px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+#search-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+#search-button {
+  display: inline-block;
+  margin-left: -91%;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: url("images/magnifying_glass.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+}
+
+#search-button:hover {
+  cursor: pointer;
+}
+
+.post-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #00b894; /* You can adjust the color */
+  color: #ffffff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  text-align: center;
+  line-height: 60px;
+  text-decoration: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow effect */
+}
+
+.post-button:hover {
+  background-color: #098466; /* You can adjust the color */
+  cursor: pointer;
+}
+
+/* Style for the sections container */
+.sections-container {
+  display: flex;
+  overflow-x: hidden; /* Hide horizontal scroll bar */
+  scroll-snap-type: x mandatory; /* Enable snapping to sections */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+
+.section {
+  flex: 0 0 100%; /* Each section occupies full width */
+  scroll-snap-align: start; /* Snap sections to start */
+  padding: 20px;
+}
+
+.posts {
+  display: flex;
+  gap: 20px; /* Adjust the gap between posts */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* Enable snapping to posts */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
+  margin-left: 10px;
+}
+
+/* Style for the scroll buttons */
+.scroll-button {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  background-color: #00b894;
+  opacity: 0.7;
+  border-radius: 50%; /* Make the button circular */
+  font-size: 18px; /* Adjust the arrow icon size */
+}
+
+.scroll-button.left {
+  left: 10px;
+}
+
+.scroll-button.right {
+  right: 10px;
+}
+
+.scroll-button:hover {
+  opacity: 1;
+}
