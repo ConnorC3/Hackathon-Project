@@ -5,12 +5,14 @@ function postEvent() {
   const eventName = document.getElementById("event-name").value;
   const eventDescription = document.getElementById("event-description").value;
   const eventLocation = document.getElementById("event-location").value;
+  const eventTime = document.getElementById("event-time").value;
 
   if (eventName && eventDescription && eventLocation) {
     const event = {
       name: eventName,
       description: eventDescription,
       location: eventLocation,
+      time: eventTime,
     };
 
     // Save the event to local storage
@@ -20,6 +22,7 @@ function postEvent() {
     document.getElementById("event-name").value = "";
     document.getElementById("event-description").value = "";
     document.getElementById("event-location").value = "";
+    document.getElementById("event-time").value = "";
 
     //alert("Event posted successfully!");
 
