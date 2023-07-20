@@ -37,67 +37,27 @@
         <a class="navbar-item navbar-login" href="#">Sign Up</a>
       </div>
     </nav>
-    <a href="#post-menu" class="post-button">
+    <a href="posting_page.html" class="post-button">
       <span>+</span>
     </a>
     <div class="sections-container">
       <!-- Existing section 1 -->
       <div class="section" id="section1">
         <h2>Section 1</h2>
-        <div class="posts">
+        <div class="posts" id="section1Posts">
           <!-- Volunteer posts for Section 1 -->
-          <!-- Example: <div class="post">Post 1</div> -->
         </div>
       </div>
 
       <!-- New section -->
       <div class="section" id="section2">
         <h2>Section 2</h2>
-        <div class="posts">
+        <div class="posts" id="section2Posts">
           <!-- Volunteer posts for Section 2 -->
-          <!-- Example: <div class="post">Post 2</div> -->
         </div>
       </div>
     </div>
-    <!-- Your other website content here -->
 
-    <script>
-      // JavaScript code for adding scroll buttons dynamically
-      function addScrollButtonsToSection(sectionElement) {
-        const leftButton = document.createElement("div");
-        leftButton.classList.add("scroll-button", "left");
-        leftButton.innerHTML = '<i class="fas fa-chevron-left"></i>'; // Use Font Awesome icon
-        sectionElement.appendChild(leftButton);
-
-        const rightButton = document.createElement("div");
-        rightButton.classList.add("scroll-button", "right");
-        rightButton.innerHTML = '<i class="fas fa-chevron-right"></i>'; // Use Font Awesome icon
-        sectionElement.appendChild(rightButton);
-
-        const postsContainer = sectionElement.querySelector(".posts");
-        leftButton.addEventListener("click", function () {
-          const scrollDistance = postsContainer.clientWidth * 0.8; // Adjust the scroll distance
-          postsContainer.scrollBy({
-            left: -scrollDistance,
-            behavior: "smooth",
-          });
-          console.log("scrolled left");
-        });
-
-        rightButton.addEventListener("click", function () {
-          const scrollDistance = postsContainer.clientWidth * 0.8; // Adjust the scroll distance
-          postsContainer.scrollBy({
-            left: scrollDistance,
-            behavior: "smooth",
-          });
-          console.log("scrolled right");
-        });
-      }
-
-      // Add scroll buttons to each section
-      document.querySelectorAll(".section").forEach(function (section) {
-        addScrollButtonsToSection(section);
-      });
-    </script>
+    <script src="index_script.js"></script>
   </body>
 </html>
