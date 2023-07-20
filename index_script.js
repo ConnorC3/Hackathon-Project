@@ -4,29 +4,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function loadPostsFromLocalStorage() {
-  const section1Posts = document.getElementById("section1Posts");
-  const section2Posts = document.getElementById("section2Posts");
+  const allPostsContainer = document.getElementById("allPosts");
 
   let events = JSON.parse(localStorage.getItem("events")) || [];
 
   // Clear existing posts to avoid duplication
-  section1Posts.innerHTML = "";
-  section2Posts.innerHTML = "";
+  allPostsContainer.innerHTML = "";
 
   // Loop through the saved events and create post elements
-  events.forEach(function (event, index) {
+  events.forEach(function (event) {
     const postElement = createPostElement(
       event.name,
       event.description,
       event.location
     );
-
-    // Display posts in the corresponding sections based on the index
-    //if (index % 2 === 0) {
-    section1Posts.appendChild(postElement);
-    //} else {
-    //section2Posts.appendChild(postElement);
-    //}
+    allPostsContainer.appendChild(postElement);
   });
 }
 
@@ -34,19 +26,9 @@ function createPostElement(eventName, eventDescription, eventLocation) {
   const postElement = document.createElement("div");
   postElement.classList.add("post");
   postElement.innerHTML = `
-    <h3>${eventName}</h3>
-    <p>${eventDescription}</p>
-    <p>${eventLocation}</p>
+    <h3>Event Name: ${eventName}</h3>
+    <p>Event Description: ${eventDescription}</p>
+    <p>Event Location: ${eventLocation}</p>
   `;
   return postElement;
 }
-
-// JavaScript code for adding scroll buttons dynamically
-function addScrollButtonsToSection(sectionElement) {
-  // ... (Your existing code for scroll buttons)
-}
-
-// Add scroll buttons to each section
-document.querySelectorAll(".section").forEach(function (section) {
-  addScrollButtonsToSection(section);
-});
