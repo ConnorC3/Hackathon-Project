@@ -136,6 +136,7 @@ body {
 
 /* Style for each post */
 .post {
+  font-family: "Roboto Condensed", sans-serif; /* Use the Google Font name here */
   flex: 0 0 calc(50% - 20px); /* Each post occupies 50% of the container width with a gap of 20px */
   padding: 10px;
   background-color: #f2f2f2;
