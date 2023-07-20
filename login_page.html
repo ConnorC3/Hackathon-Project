@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Post an Event on VolunteerBuddies" />
+    <meta name="description" content="VolunteerBuddies Login" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post Event | VolunteerBuddies</title>
+    <title>Login | VolunteerBuddies</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="stylesheet" type="text/css" href="posting_styles.css" />
+    <link rel="stylesheet" type="text/css" href="login_styles.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -19,31 +19,42 @@
       </div>
     </nav>
 
-    <div class="posting-container">
-      <h2 class="posting-title">Post an Event</h2>
-      <form class="posting-form">
-        <label for="event-name">Event Name:</label>
+    <div class="login-container">
+      <h2 class="login-title">Login to VolunteerBuddies</h2>
+      <form class="login-form" id="login-form">
+        <label for="username">Username:</label>
         <input
           type="text"
-          id="event-name"
-          name="event-name"
+          id="username"
+          name="username"
           required
-          placeholder="Event Name"
+          placeholder="Username"
         />
 
-        <label for="event-description">Event Description:</label>
-        <textarea
-          id="event-description"
-          name="event-description"
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
           required
-          placeholder="Event Description"
-        ></textarea>
+          placeholder="Password"
+        />
 
-        <button type="button" class="post-button" onclick="postEvent()">
-          Post
-        </button>
+        <button type="submit" class="login-button">Login</button>
       </form>
+      <div class="create-account-link">
+        Don't have an account? <a href="signup_page.html">Create one here</a>
+      </div>
     </div>
-    <script src="posting_script.js"></script>
+
+    <script>
+      // JavaScript code for handling form submission and redirecting to index.html
+      const loginForm = document.getElementById("login-form");
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        window.location.href = "index.html";
+      });
+    </script>
   </body>
 </html>

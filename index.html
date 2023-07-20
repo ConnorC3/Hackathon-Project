@@ -26,7 +26,7 @@
           <a class="navbar-item" href="about_us.html">About Us</a>
         </div>
         <div class="search-container">
-          <form>
+          <form id="search-form">
             <input type="text" placeholder="Search events" id="search-input" />
             <button type="submit" id="search-button"></button>
           </form>
@@ -40,14 +40,8 @@
     <a href="posting_page.html" class="post-button">
       <span>+</span>
     </a>
-    <div class="sections-container">
-      <!-- Existing section 1 -->
-      <div class="section" id="section1">
-        <h2>Volunteer Posts</h2>
-        <div class="posts" id="allPosts">
-          <!-- All volunteer posts will be displayed here -->
-        </div>
-      </div>
+    <div class="posts" id="postsContainer">
+      <!-- Volunteer posts will be dynamically added here -->
     </div>
 
     <script src="index_script.js"></script>
