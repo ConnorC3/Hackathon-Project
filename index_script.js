@@ -1,5 +1,3 @@
-// JavaScript code for index.html
-
 document.addEventListener("DOMContentLoaded", function () {
   // Load the saved events from local storage and display them as posts
   loadPostsFromLocalStorage();
@@ -17,23 +15,28 @@ function loadPostsFromLocalStorage() {
 
   // Loop through the saved events and create post elements
   events.forEach(function (event, index) {
-    const postElement = createPostElement(event.name, event.description);
+    const postElement = createPostElement(
+      event.name,
+      event.description,
+      event.location
+    );
 
     // Display posts in the corresponding sections based on the index
-    if (index % 2 === 0) {
-      section1Posts.appendChild(postElement);
-    } else {
-      section2Posts.appendChild(postElement);
-    }
+    //if (index % 2 === 0) {
+    section1Posts.appendChild(postElement);
+    //} else {
+    //section2Posts.appendChild(postElement);
+    //}
   });
 }
 
-function createPostElement(eventName, eventDescription) {
+function createPostElement(eventName, eventDescription, eventLocation) {
   const postElement = document.createElement("div");
   postElement.classList.add("post");
   postElement.innerHTML = `
     <h3>${eventName}</h3>
     <p>${eventDescription}</p>
+    <p>${eventLocation}</p>
   `;
   return postElement;
 }

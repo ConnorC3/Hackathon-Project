@@ -128,11 +128,19 @@ body {
 
 .posts {
   display: flex;
+  flex-wrap: wrap; /* Add flex-wrap to enable wrapping to the next row */
   gap: 20px; /* Adjust the gap between posts */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory; /* Enable snapping to posts */
-  scroll-behavior: smooth; /* Smooth scrolling behavior */
+  overflow: hidden; /* Hide overflowing posts */
   margin-left: 10px;
+}
+
+/* Style for each post */
+.post {
+  flex: 0 0 calc(50% - 20px); /* Each post occupies 50% of the container width with a gap of 20px */
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Style for the scroll buttons */

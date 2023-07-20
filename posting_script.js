@@ -4,11 +4,13 @@
 function postEvent() {
   const eventName = document.getElementById("event-name").value;
   const eventDescription = document.getElementById("event-description").value;
+  const eventLocation = document.getElementById("event-location").value;
 
-  if (eventName && eventDescription) {
+  if (eventName && eventDescription && eventLocation) {
     const event = {
       name: eventName,
       description: eventDescription,
+      location: eventLocation,
     };
 
     // Save the event to local storage
@@ -17,8 +19,9 @@ function postEvent() {
     // Clear the form fields
     document.getElementById("event-name").value = "";
     document.getElementById("event-description").value = "";
+    document.getElementById("event-location").value = "";
 
-    alert("Event posted successfully!");
+    //alert("Event posted successfully!");
 
     // Reload the index.html page to update the posts
     window.location.href = "index.html";
