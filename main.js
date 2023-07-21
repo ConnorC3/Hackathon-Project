@@ -4,6 +4,7 @@ function checkLoggedIn() {
   const greetingContainer = document.getElementById("greetingContainer");
   const logoutButton = document.getElementById("logout");
   const loginButton = document.getElementById("login");
+  const postButtonContainer = document.getElementById("postButtonContainer"); // Get the post button container
 
   if (user) {
     // User is already logged in, show the greeting message
@@ -14,6 +15,9 @@ function checkLoggedIn() {
     // Show logout link and hide login link
     logoutButton.style.display = "block";
     loginButton.style.display = "none";
+
+    // Show the post button since the user is logged in
+    postButtonContainer.style.display = "block";
 
     // Add event listener for logout button
     logoutButton.addEventListener("click", handleLogout);
@@ -26,6 +30,15 @@ function checkLoggedIn() {
     // Show login link and hide logout link
     logoutButton.style.display = "none";
     loginButton.style.display = "block";
+
+    // Hide the post button since the user is not logged in
+    postButtonContainer.style.display = "none";
+
+    // Add event listener for login button
+    loginButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.location.href = "login_page.html";
+    });
   }
 }
 
