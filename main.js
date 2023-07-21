@@ -1,5 +1,4 @@
 // Function to check if the user is already logged in
-// Function to check if the user is already logged in
 function checkLoggedIn() {
   const user = JSON.parse(localStorage.getItem("user"));
   const greetingContainer = document.getElementById("greetingContainer");
@@ -49,6 +48,31 @@ function handleLogin(event) {
 
   // Redirect to index.html after successful login
   window.location.href = "index.html";
+}
+
+// Function to handle user signup
+function handleSignUp(event) {
+  event.preventDefault();
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // Check if the user already exists in localStorage
+  if (localStorage.getItem(username)) {
+    alert("Username already exists. Please choose a different username.");
+    return;
+  }
+
+  // Create user object and store it in localStorage
+  const user = {
+    username: username,
+    email: email,
+    password: password,
+  };
+  localStorage.setItem(username, JSON.stringify(user));
+
+  // Redirect to login_page.html after successful signup
+  window.location.href = "login_page.html";
 }
 
 // Function to handle user logout
