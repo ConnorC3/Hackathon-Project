@@ -19,6 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
       rel="stylesheet"
     />
+    <script src="main.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -37,10 +38,16 @@
         </div>
       </div>
       <div class="search-input">
-        <a class="navbar-item navbar-login" href="login_page.html">Login</a>
-        <a class="navbar-item navbar-login" href="#">Sign Up</a>
+        <a class="navbar-item navbar-login" id="logout" href="#">Logout</a>
+        <a class="navbar-item navbar-login" id="login" href="login_page.html"
+          >Login</a
+        >
       </div>
     </nav>
+    <div class="greeting" id="greetingContainer">
+      <!-- The greeting message will be dynamically added here -->
+    </div>
+
     <a href="posting_page.html" class="post-button">
       <span>+</span>
     </a>
@@ -49,5 +56,6 @@
     </div>
 
     <script src="index_script.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

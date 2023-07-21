@@ -1,13 +1,23 @@
 // JavaScript code for posting_page.html
 
 // Function to handle the event posting
+const user = JSON.parse(localStorage.getItem("user"));
+function checkLoggedIn() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const loginLink = document.querySelector(".navbar-login.login-link");
+}
 function postEvent() {
   const eventName = document.getElementById("event-name").value;
   const eventDescription = document.getElementById("event-description").value;
   const eventLocation = document.getElementById("event-location").value;
   const eventTime = document.getElementById("event-time").value;
-
-  if (eventName && eventDescription && eventLocation) {
+  function checkLoggedIn() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const loginLink = document.querySelector(".navbar-login.login-link");
+  }
+  if (user == undefined) {
+    console.log(user);
+  } else if (eventName && eventDescription && eventLocation) {
     const event = {
       name: eventName,
       description: eventDescription,
