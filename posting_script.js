@@ -17,6 +17,7 @@ function postEvent() {
   }
   if (user == undefined) {
     console.log(user);
+    alert("Please log in before posting");
   } else if (eventName && eventDescription && eventLocation) {
     const event = {
       name: eventName,
