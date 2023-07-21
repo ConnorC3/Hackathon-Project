@@ -71,3 +71,9 @@ form {
 .create-account-link a:hover {
   text-decoration: underline;
 }
+
+#guest {
+  color: black;
+  text-align: center;
+  text-decoration: underline;
+}
