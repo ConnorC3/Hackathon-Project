@@ -67,37 +67,40 @@ a {
 }
 
 .search-container {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-left: 10px;
-}
-
-#search-input {
   flex: 1;
-  width: 290px;
-  height: 30px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  margin-right: 10px;
-  padding-left: 40px;
+  max-width: 225px;
   background-color: var(--input-background);
-  color: var(--text-color);
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px;
 }
 
-#search-input::placeholder {
-  color: var(--placeholder-color);
+#searchInput {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 16px;
+  margin-top: 1px;
 }
 
 #search-button {
-  display: inline-block;
-  margin-left: -91%;
-  vertical-align: middle;
   width: 20px;
   height: 20px;
   background: url("images/magnifying_glass.png");
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
+  cursor: pointer;
+}
+
+#search-input::placeholder {
+  color: var(--placeholder-color);
 }
 
 #search-button:hover {
@@ -160,18 +163,9 @@ a {
   background-color: #f2f2f2;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  min-width: 300px;
   text-align: center;
 }
-.attendance-button {
-  background-color: #00997a;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
+
 /* Style for the scroll buttons */
 .scroll-button {
   position: absolute;
@@ -219,13 +213,7 @@ a {
   left: 0;
   right: 0;
 }
-#attendence {
-  background-color: #00997a;
-}
 #greetingContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100px;
 }

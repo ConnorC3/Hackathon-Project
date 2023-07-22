@@ -59,64 +59,29 @@ function createPostElement(
     <p>Event Location: ${eventLocation}</p>
     <p>Event Time: ${eventTime}</p>
     <p>Number of volunteers: ${volunteers}</p>
-    <p>Press check to attend: <p><button class="attendance-button" id="attendance-${eventName}"><i class="fas fa-thumbs-up"></i></button></p>
+    <p>Press check to attend: <button class="attendance-button" id="attendance-${eventName}"><i class="fas fa-check"></i></button>
+    <button class="cancel-button" id="cancel-${eventName}"><i class="fas fa-times"></i></button></p> 
   `;
 
-  // Add event listener to the attendance button
+  // Check if the attendance button exists before adding event listener
   const attendanceButton = postElement.querySelector(
     `#attendance-${eventName}`
   );
-  attendanceButton.addEventListener("click", () => handleAttendance(eventName));
+  if (attendanceButton) {
+    attendanceButton.addEventListener("click", () =>
+      handleAttendance(eventName)
+    );
+  }
+
+  // Check if the cancel button exists before adding event listener
+  const cancelButton = postElement.querySelector(`#cancel-${eventName}`);
+  if (cancelButton) {
+    cancelButton.addEventListener("click", () =>
+      handleCancelRegistration(eventName)
+    );
+  }
 
   return postElement;
-}
-
-function handleSearch() {
-  const searchTerm = document
-    .getElementById("search-input")
-    .value.toLowerCase();
-  const postsContainer = document.getElementById("postsContainer");
-  let events = JSON.parse(localStorage.getItem("events")) || [];
-
-  // Clear existing posts to avoid duplication
-  postsContainer.innerHTML = "";
-
-  const filteredEvents = events.filter(
-    (event) =>
-      event.name.toLowerCase().includes(searchTerm) ||
-      event.description.toLowerCase().includes(searchTerm) ||
-      event.location.toLowerCase().includes(searchTerm)
-  );
-
-  const postsPerRow = 3;
-  let currentRow = document.createElement("div");
-  currentRow.classList.add("row");
-
-  // Loop through the filtered events and create post elements
-  filteredEvents.forEach(function (event, index) {
-    const postElement = createPostElement(
-      event.name,
-      event.description,
-      event.location,
-      event.time,
-      event.volunteers || 0 // Pass the number of volunteers to the createPostElement function
-    );
-
-    // Add the post to the current row
-    currentRow.appendChild(postElement);
-
-    // Check if we need to start a new row
-    if ((index + 1) % postsPerRow === 0) {
-      postsContainer.appendChild(currentRow);
-      currentRow = document.createElement("div");
-      currentRow.classList.add("row");
-    }
-  });
-
-  // Check if there are any remaining posts in the current row
-  if (currentRow.childElementCount > 0) {
-    postsContainer.appendChild(currentRow);
-  }
 }
 
 function handleAttendance(eventName) {
@@ -154,5 +119,35 @@ function handleAttendance(eventName) {
 
     // Refresh the posts to update the displayed number of volunteers
     loadPostsFromLocalStorage();
+  }
+}
+
+// Function to handle search
+function handleSearch() {
+  const searchInput = document.getElementById("searchInput");
+  const searchQuery = searchInput.value.trim().toLowerCase();
+  const postsContainer = document.getElementById("postsContainer");
+  const posts = postsContainer.getElementsByClassName("post");
+
+  // Loop through all posts and hide/show them based on the search query
+  for (const post of posts) {
+    const eventName = post.querySelector("h3").textContent.toLowerCase();
+    const eventDescription = post
+      .querySelector("p:nth-of-type(1)")
+      .textContent.toLowerCase();
+    const eventLocation = post
+      .querySelector("p:nth-of-type(2)")
+      .textContent.toLowerCase();
+
+    // Check if the search query matches any part of the event details
+    if (
+      eventName.includes(searchQuery) ||
+      eventDescription.includes(searchQuery) ||
+      eventLocation.includes(searchQuery)
+    ) {
+      post.style.display = "block"; // Show the post if it matches the search query
+    } else {
+      post.style.display = "none"; // Hide the post if it doesn't match the search query
+    }
   }
 }
