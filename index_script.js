@@ -151,3 +151,39 @@ function handleSearch() {
     }
   }
 }
+function handleCancelRegistration(eventName) {
+  // Retrieve the current events from local storage
+  let events = JSON.parse(localStorage.getItem("events")) || [];
+
+  // Find the event with the matching name
+  const eventToUpdate = events.find((event) => event.name === eventName);
+
+  if (eventToUpdate) {
+    // Check if the user is logged in before allowing cancellation
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("Please log in to cancel your attendance.");
+      return;
+    }
+
+    // Check if the user has attended this event
+    const attendedEvents = user.attendedEvents || [];
+    const eventIndex = attendedEvents.indexOf(eventName);
+    if (eventIndex === -1) {
+      alert("You have not attended this event.");
+      return;
+    }
+
+    // Reduce the number of volunteers and remove the event from the user's attended events list
+    eventToUpdate.volunteers = Math.max((eventToUpdate.volunteers || 0) - 1, 0);
+    attendedEvents.splice(eventIndex, 1);
+    user.attendedEvents = attendedEvents;
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // Save the updated events back to local storage
+    localStorage.setItem("events", JSON.stringify(events));
+
+    // Refresh the posts to update the displayed number of volunteers
+    loadPostsFromLocalStorage();
+  }
+}
