@@ -57,7 +57,7 @@ function createPostElement(
     <h3>Event Name: ${eventName}</h3>
     <p>Event Description: ${eventDescription}</p>
     <p>Event Location: ${eventLocation}</p>
-    <p>Event Date and Time: ${eventTime}</p>
+    <p>Event Time: ${eventTime}</p>
     <p>Number of volunteers: ${volunteers}</p>
     <p>Press check to attend: <button class="attendance-button" id="attendance-${eventName}"><i class="fas fa-check"></i></button>
     <button class="cancel-button" id="cancel-${eventName}"><i class="fas fa-times"></i></button></p> 
