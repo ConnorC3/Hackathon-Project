@@ -59,11 +59,35 @@ function createPostElement(
     <p>Event Location: ${eventLocation}</p>
     <p>Event Time: ${eventTime}</p>
     <p>Number of volunteers: ${volunteers}</p>
-    <p>Press check to attend: <button class="attendance-button" id="attendance-${eventName}"><i class="fas fa-check"></i></button>
-    <button class="cancel-button" id="cancel-${eventName}"><i class="fas fa-times"></i></button></p> 
+    <p>
+      Press check to attend:
+      <button class="attendance-button" id="attendance-${eventName}">
+        <i class="fas fa-check"></i>
+      </button>
+      <button class="cancel-button" id="cancel-${eventName}">
+        <i class="fas fa-times"></i>
+      </button>
+    </p>
+    
+    <!-- Comment section for this event -->
+    <div class="comments-section">
+      <h4>Comments:</h4>
+      <input
+        type="text"
+        placeholder="Add a comment..."
+        id="commentInput-${eventName}"
+      />
+      <button
+        class="comment-button"
+        onclick="postComment('${eventName}')"
+      >
+        Post
+      </button>
+      <div id="commentList-${eventName}" class="comment-list"></div>
+    </div>
   `;
 
-  // Check if the attendance button exists before adding event listener
+  // Check if the attendance button exists before adding an event listener
   const attendanceButton = postElement.querySelector(
     `#attendance-${eventName}`
   );
@@ -73,13 +97,17 @@ function createPostElement(
     );
   }
 
-  // Check if the cancel button exists before adding event listener
+  // Check if the cancel button exists before adding an event listener
   const cancelButton = postElement.querySelector(`#cancel-${eventName}`);
   if (cancelButton) {
     cancelButton.addEventListener("click", () =>
       handleCancelRegistration(eventName)
     );
   }
+
+  // Load and display comments for this event
+  const commentList = postElement.querySelector(`#commentList-${eventName}`);
+  loadComments(eventName, commentList);
 
   return postElement;
 }
@@ -151,6 +179,45 @@ function handleSearch() {
     }
   }
 }
+
+function postComment(eventName) {
+  const commentInput = document.getElementById(`commentInput-${eventName}`);
+  const commentText = commentInput.value.trim();
+
+  if (commentText !== "") {
+    // Create a new comment element
+    const commentElement = document.createElement("div");
+    commentElement.classList.add("comment");
+    commentElement.textContent = commentText;
+
+    // Get the comment list for this event
+    const commentList = document.getElementById(`commentList-${eventName}`);
+
+    // Append the new comment to the comment list
+    commentList.appendChild(commentElement);
+
+    // Clear the comment input
+    commentInput.value = "";
+  }
+}
+
+function loadComments(eventName, commentList) {
+  // You can load comments for this event from your backend or local storage
+  // For this example, we'll add some dummy comments
+  const dummyComments = [
+    "Great event! Looking forward to attending.",
+    "I'll be there for sure!",
+  ];
+
+  // Create comment elements and add them to the comment list
+  dummyComments.forEach((commentText) => {
+    const commentElement = document.createElement("div");
+    commentElement.classList.add("comment");
+    commentElement.textContent = commentText;
+    commentList.appendChild(commentElement);
+  });
+}
+
 function handleCancelRegistration(eventName) {
   // Retrieve the current events from local storage
   let events = JSON.parse(localStorage.getItem("events")) || [];
