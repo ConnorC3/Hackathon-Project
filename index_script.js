@@ -61,10 +61,16 @@ function createPostElement(
     <p>Number of volunteers: ${volunteers}</p>
     <p>
       Press check to attend:
-      <button class="attendance-button" id="attendance-${eventName}">
+      <button class="attendance-button" id="attendance-${eventName.replace(
+        /\s/g,
+        "_"
+      )}">
         <i class="fas fa-check"></i>
       </button>
-      <button class="cancel-button" id="cancel-${eventName}">
+      <button class="cancel-button" id="cancel-${eventName.replace(
+        /\s/g,
+        "_"
+      )}">
         <i class="fas fa-times"></i>
       </button>
     </p>
@@ -75,7 +81,7 @@ function createPostElement(
       <input
         type="text"
         placeholder="Add a comment..."
-        id="commentInput-${eventName}"
+        id="commentInput-${eventName.replace(/\s/g, "_")}"
       />
       <button
         class="comment-button"
@@ -83,13 +89,16 @@ function createPostElement(
       >
         Post
       </button>
-      <div id="commentList-${eventName}" class="comment-list"></div>
+      <div id="commentList-${eventName.replace(
+        /\s/g,
+        "_"
+      )}" class="comment-list"></div>
     </div>
   `;
 
   // Check if the attendance button exists before adding an event listener
   const attendanceButton = postElement.querySelector(
-    `#attendance-${eventName}`
+    `#attendance-${eventName.replace(/\s/g, "_")}`
   );
   if (attendanceButton) {
     attendanceButton.addEventListener("click", () =>
@@ -98,7 +107,9 @@ function createPostElement(
   }
 
   // Check if the cancel button exists before adding an event listener
-  const cancelButton = postElement.querySelector(`#cancel-${eventName}`);
+  const cancelButton = postElement.querySelector(
+    `#cancel-${eventName.replace(/\s/g, "_")}`
+  );
   if (cancelButton) {
     cancelButton.addEventListener("click", () =>
       handleCancelRegistration(eventName)
@@ -106,7 +117,9 @@ function createPostElement(
   }
 
   // Load and display comments for this event
-  const commentList = postElement.querySelector(`#commentList-${eventName}`);
+  const commentList = postElement.querySelector(
+    `#commentList-${eventName.replace(/\s/g, "_")}`
+  );
   loadComments(eventName, commentList);
 
   return postElement;
@@ -181,7 +194,9 @@ function handleSearch() {
 }
 
 function postComment(eventName) {
-  const commentInput = document.getElementById(`commentInput-${eventName}`);
+  const commentInput = document.getElementById(
+    `commentInput-${eventName.replace(/\s/g, "_")}`
+  );
   const commentText = commentInput.value.trim();
 
   if (commentText !== "") {
@@ -191,7 +206,9 @@ function postComment(eventName) {
     commentElement.textContent = commentText;
 
     // Get the comment list for this event
-    const commentList = document.getElementById(`commentList-${eventName}`);
+    const commentList = document.getElementById(
+      `commentList-${eventName.replace(/\s/g, "_")}`
+    );
 
     // Append the new comment to the comment list
     commentList.appendChild(commentElement);
