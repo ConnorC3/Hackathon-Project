@@ -16,6 +16,7 @@ function loadComments(eventName, commentList) {
 
 // Function to post a comment for a specific event
 function postComment(eventName) {
+  eventName = eventName.replaceAll(" ", "_");
   const commentInput = document.getElementById(`commentInput-${eventName}`);
   const commentText = commentInput.value.trim();
 
