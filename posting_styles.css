@@ -52,6 +52,10 @@ body {
   font-size: 16px;
 }
 
+.posting-form textarea {
+  resize: vertical;
+}
+
 .post-button {
   background-color: #098466;
   color: #fff;
