@@ -166,6 +166,11 @@ a {
   text-align: center;
 }
 
+.comment {
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
 /* Style for the scroll buttons */
 .scroll-button {
   position: absolute;
